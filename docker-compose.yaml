@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  # LLM
+  llm_service:
+    build:
+      context: ./LLM
+      dockerfile: LLM.dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      - ollama_url=http://host.docker.internal:11434/api/generate
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  # DB
+  main_service:
+    build:
+      context: ./DB
+      dockerfile: DB.dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - llm_url=http://llm_service:8001/responses
+    volumes:
+      - ./data:/app/data 
