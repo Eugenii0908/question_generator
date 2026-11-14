@@ -18,7 +18,7 @@ class requests_data_out(requests_data):
     id: int
     model_config = ConfigDict(from_attributes=True) 
 
-engine = create_engine('sqlite:////app/data/students.db')
+engine = create_engine('sqlite:////app/data/requests.db')
 
 Base = declarative_base()
 
