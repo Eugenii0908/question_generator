@@ -71,7 +71,7 @@ docker compose up --build -d
 3. Запустите сервис LLM (в отдельном терминале):
    ```bash
    cd LLM
-   uvicorn llm_service:app --port 8001
+   uvicorn LLM:app --port 8001
    ```
 4. Запустите Основной сервис (в другом терминале):
    ```bash
